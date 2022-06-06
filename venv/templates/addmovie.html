@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add movie</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style2.css')}}">
+    <style>
+        table, th, tr, td {border: 1px solid black;}
+    </style>
+</head>
+<div class="filtr">
+
+</div>
+<h2 style="text-align: center; margin-top: 70px; font-size: 45px;">Add movie</h2>
+<div>
+   
+    <form method="POST" action="/movies/">
+        {{ form.hidden_tag() }}
+        <table class="table2">
+            {% for field in form if field.widget.input_type != 'hidden' %}
+                <tr>
+                    <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
+                    <td>{{ field }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <th>
+                    <input class="submitbutton" type="submit" value="SEND">
+                </th>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

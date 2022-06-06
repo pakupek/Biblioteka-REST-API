@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie list</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <style>
+        table, th, tr, td {border: 1px solid black;}
+    </style>
+</head>
+<div class="filtr">
+
+</div>
+<h2 style="text-align: center; margin-top: 70px; font-size: 45px;">Movies list</h2>
+
+<table>
+    <thead>
+        <th>Title</th>
+        <th>Production year</th>
+        <th>Duration(min)</th>
+        <th>Movie type</th>
+        <th>Description</th>
+    </thead>
+{% for movie in movies %}
+    <tr>
+        <td><a href="/movies/{{ loop.index }}">{{ movie.title }}</a></td>
+        <td>{{ movie.production_year }}</td>
+        <td>{{ movie.duration }}</td>
+        <td>{{ movie.movie_type }}</td>
+        <td>{{ movie.description }}</td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
